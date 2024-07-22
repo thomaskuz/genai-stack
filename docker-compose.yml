@@ -2,7 +2,7 @@ services:
 
   llm: &llm
     image: ollama/ollama:latest
-    profiles: ["linux"]
+    profiles: ["linux"] # je kan switchen in welke profile je wilt runnen , met of zonder GPU
     networks:
       - net
 
@@ -202,7 +202,7 @@ services:
       pull-model:
         condition: service_completed_successfully
     x-develop:
-      watch:
+      watch: # rebuild de docker automatisch, enkel die ene docker, de andere moeten niet gerebuild worden
         - action: rebuild
           path: .
           ignore:
